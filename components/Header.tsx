@@ -53,7 +53,7 @@ export default function Header() {
               </div>
             </div>
             <Link href="/overseas" className="hover:text-green-700 transition-colors">
-              🌏 海外大会
+              🌏 東南アジア
             </Link>
             <Link href="/contact" className="hover:text-green-700 transition-colors">
               お問い合わせ
@@ -114,7 +114,7 @@ export default function Header() {
               className="block py-2 text-sm font-medium text-gray-700 hover:text-green-700"
               onClick={() => setMenuOpen(false)}
             >
-              🌏 海外大会（シンガポール・マレーシア）
+              🌏 東南アジア大会（シンガポール・マレーシア）
             </Link>
             <Link
               href="/contact"

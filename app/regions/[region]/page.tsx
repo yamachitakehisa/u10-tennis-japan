@@ -34,6 +34,15 @@ const REGION_EMOJI: Record<string, string> = {
   '九州・沖縄': '🌺',
 }
 
+const REGION_DESC: Record<string, string> = {
+  '北海道・東北': '北海道・青森・岩手・宮城・秋田・山形・福島のU8・U10ジュニアテニス大会をまとめています。各県テニス協会主催の公式大会から、スクール・クラブ主催のカラーボール大会まで掲載しています。',
+  '関東': '東京・神奈川・埼玉・千葉・茨城・栃木・群馬のU8・U10ジュニアテニス大会をまとめています。関東ジュニア選手権（U10グリーンボール）や、各県協会・民間クラブのレッド・オレンジボール大会を掲載しています。',
+  '中部': '愛知・静岡・長野・岐阜・新潟・富山・石川・福井・山梨のU8・U10ジュニアテニス大会をまとめています。愛知カラーボールプロジェクトをはじめ、中部地方のジュニア大会を幅広く掲載しています。',
+  '関西': '大阪・兵庫・京都・奈良・滋賀・和歌山・三重のU8・U10ジュニアテニス大会をまとめています。関西U10グリーンボール選手権や兵庫県テニス協会主催大会、万博テニスガーデンなどの大会を掲載しています。',
+  '中国・四国': '広島・岡山・山口・鳥取・島根・愛媛・香川・徳島・高知のU8・U10ジュニアテニス大会をまとめています。各県・地域テニス協会主催の公式大会を掲載しています。',
+  '九州・沖縄': '福岡・佐賀・長崎・熊本・大分・宮崎・鹿児島・沖縄のU8・U10ジュニアテニス大会をまとめています。JTA全国大会（宮崎）や福岡パシフィックぴよぴよCUPなどを掲載しています。',
+}
+
 export default function RegionPage({ params }: Props) {
   const region = decodeURIComponent(params.region) as Region
   if (!REGIONS.includes(region as typeof REGIONS[number])) notFound()
@@ -54,12 +63,13 @@ export default function RegionPage({ params }: Props) {
       </nav>
 
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">
+        <h1 className="text-2xl font-bold text-gray-900 mb-2">
           {emoji} {region}のジュニアテニス大会
         </h1>
-        <p className="text-gray-600 text-sm">
-          {regionTournaments.length}件の大会が見つかりました
-        </p>
+        {REGION_DESC[region] && (
+          <p className="text-gray-600 text-sm leading-relaxed mb-2">{REGION_DESC[region]}</p>
+        )}
+        <p className="text-gray-500 text-xs">{regionTournaments.length}件の大会が見つかりました</p>
       </div>
 
       {/* Region nav */}

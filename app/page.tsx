@@ -7,15 +7,17 @@ import TournamentCard from '@/components/TournamentCard'
 import DisclaimerBanner from '@/components/DisclaimerBanner'
 
 export const metadata: Metadata = {
-  title: 'U10 Junior Tennis Japan | 日本全国ジュニアテニス大会カレンダー',
+  title: 'U10ジュニアテニス大会カレンダー | レッド・オレンジ・グリーンボール大会を全国検索',
   description:
-    '日本全国のU8・U10ジュニアテニス大会（レッドボール・オレンジボール・グリーンボール）を地域・日程・ボール種別で検索。小学生・幼児のテニス試合情報を保護者向けにまとめた大会カレンダー。',
+    'U8・U10の子どものテニス大会をかんたんに探せる保護者向けカレンダー。レッドボール・オレンジボール・グリーンボール大会を地域・開催月・ボール種別で絞り込み検索。初めてのテニス大会から公式競技大会まで日本全国を網羅。',
+  keywords: 'U10テニス,U8テニス,ジュニアテニス大会,レッドボール大会,オレンジボール大会,グリーンボール大会,小学生テニス,子どもテニス試合,初めてのテニス大会',
 }
 
 const tournaments = tournamentsData as Tournament[]
+const domesticTournaments = tournaments.filter((t) => !t.country || t.country === 'Japan')
 
 export default function HomePage() {
-  const upcoming = getUpcomingTournaments(tournaments).slice(0, 6)
+  const upcoming = getUpcomingTournaments(domesticTournaments).slice(0, 6)
 
   return (
     <div>

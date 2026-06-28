@@ -7,9 +7,9 @@ import TournamentCard from '@/components/TournamentCard'
 import DisclaimerBanner from '@/components/DisclaimerBanner'
 
 export const metadata: Metadata = {
-  title: '海外ジュニアテニス大会（シンガポール・マレーシア）',
+  title: '東南アジアジュニアテニス大会（シンガポール・マレーシア）',
   description:
-    'シンガポール・マレーシアのU8・U10ジュニアテニス大会情報。STA・LTAMの公式大会やカラーボール大会をまとめています。',
+    'シンガポール・マレーシアなど東南アジアのU8・U10ジュニアテニス大会情報。STA・LTAMの公式大会やカラーボール大会をまとめています。',
 }
 
 const tournaments = tournamentsData as Tournament[]
@@ -55,9 +55,9 @@ export default function OverseasPage() {
       </nav>
 
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">🌏 海外ジュニアテニス大会</h1>
+        <h1 className="text-2xl font-bold text-gray-900 mb-1">🌏 東南アジアジュニアテニス大会</h1>
         <p className="text-gray-600 text-sm">
-          シンガポール・マレーシアなど海外のU8・U10ジュニアテニス大会をまとめています。
+          シンガポール・マレーシアなど東南アジアのU8・U10ジュニアテニス大会をまとめています。
           順次情報を追加していきます。
         </p>
       </div>

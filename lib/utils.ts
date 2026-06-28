@@ -1,4 +1,4 @@
-import type { Tournament, FilterState, BallType, Level, EventType, Status } from './types'
+import type { Tournament, FilterState, BallType, Level, EventType, Status, DateStatus, OrganizerType, CompetitionLevel } from './types'
 
 export function formatDate(dateStr: string): string {
   const date = new Date(dateStr)
@@ -88,6 +88,32 @@ export const STATUS_COLORS: Record<Status, { bg: string; text: string }> = {
   CheckRequired: { bg: 'bg-yellow-400', text: 'text-yellow-900' },
 }
 
+export const DATE_STATUS_LABELS: Record<DateStatus, string> = {
+  Confirmed: '日程確定',
+  Estimated: '日程未定（例年参考）',
+  Historical: '過去開催実績',
+}
+
+export const DATE_STATUS_COLORS: Record<DateStatus, { bg: string; text: string }> = {
+  Confirmed: { bg: 'bg-blue-100', text: 'text-blue-700' },
+  Estimated: { bg: 'bg-yellow-100', text: 'text-yellow-800' },
+  Historical: { bg: 'bg-gray-100', text: 'text-gray-600' },
+}
+
+export const ORGANIZER_TYPE_LABELS: Record<OrganizerType, string> = {
+  Official: '公式・協会主催',
+  Private: '民間・クラブ主催',
+  MatchPlay: 'マッチ練習会',
+}
+
+export const COMPETITION_LEVEL_LABELS: Record<CompetitionLevel, string> = {
+  National: '全国大会',
+  Regional: '地域大会',
+  Prefecture: '都道府県大会',
+  Club: 'クラブ・スクール大会',
+  Open: 'オープン大会',
+}
+
 export const REGIONS = [
   '北海道・東北',
   '関東',
@@ -98,8 +124,7 @@ export const REGIONS = [
 ] as const
 
 export const OVERSEAS_REGIONS = [
-  'シンガポール',
-  'マレーシア',
+  '東南アジア',
   'その他海外',
 ] as const
 

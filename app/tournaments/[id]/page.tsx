@@ -142,6 +142,45 @@ export default function TournamentDetailPage({ params }: Props) {
         </div>
       </div>
 
+      {/* Suited for / Cautions */}
+      {(t.suitedFor || t.cautions || t.level === 'FirstTimer') && (
+        <div className="card mb-6">
+          <div className="p-6">
+            <h2 className="font-bold text-gray-800 mb-4 text-base">👨‍👩‍👧 この大会について</h2>
+            <div className="space-y-4">
+              {(t.suitedFor || t.level === 'FirstTimer') && (
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <p className="text-xs font-bold text-blue-600 mb-1">✨ この大会に向いている子</p>
+                  <p className="text-sm text-blue-800 leading-relaxed">
+                    {t.suitedFor ?? (
+                      t.level === 'FirstTimer'
+                        ? 'テニスの試合が初めてのお子さんに最適です。勝ち負けよりも試合経験を積むことを目的とした大会です。'
+                        : t.level === 'Beginner'
+                        ? '数回試合経験があり、これからもっと大会に出たいお子さん向けです。'
+                        : ''}
+                  </p>
+                </div>
+              )}
+              {t.cautions && (
+                <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                  <p className="text-xs font-bold text-orange-600 mb-1">⚠️ 保護者への注意点</p>
+                  <p className="text-sm text-orange-800 leading-relaxed">{t.cautions}</p>
+                </div>
+              )}
+              {t.status === 'CheckRequired' && !t.cautions && (
+                <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                  <p className="text-xs font-bold text-orange-600 mb-1">⚠️ 保護者への注意点</p>
+                  <p className="text-sm text-orange-800 leading-relaxed">
+                    この大会は2026年の開催・日程がまだ公式確認されていません。
+                    申込前に必ず公式ページで最新情報をご確認ください。
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Official URL */}
       <div className="card mb-6 bg-green-50 border-green-200">
         <div className="p-6 text-center">

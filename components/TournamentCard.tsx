@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Tournament } from '@/lib/types'
-import { formatDateRange, LEVEL_LABELS, EVENT_TYPE_LABELS } from '@/lib/utils'
+import { formatDateRange, LEVEL_LABELS, EVENT_TYPE_LABELS, DATE_STATUS_LABELS, DATE_STATUS_COLORS } from '@/lib/utils'
 import BallBadge from './BallBadge'
 import StatusBadge from './StatusBadge'
 
@@ -28,10 +28,15 @@ export default function TournamentCard({ tournament: t }: Props) {
         }`}
       />
       <div className="p-4">
-        {/* Status + Ball */}
+        {/* Status + Ball + DateStatus */}
         <div className="flex flex-wrap items-center gap-2 mb-2">
           <StatusBadge status={t.status} />
           <BallBadge ballType={t.ballType} size="sm" />
+          {t.dateStatus && (
+            <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${DATE_STATUS_COLORS[t.dateStatus].bg} ${DATE_STATUS_COLORS[t.dateStatus].text}`}>
+              {DATE_STATUS_LABELS[t.dateStatus]}
+            </span>
+          )}
         </div>
 
         {/* Title */}
@@ -73,7 +78,7 @@ export default function TournamentCard({ tournament: t }: Props) {
 
         {/* Footer */}
         <div className="mt-3 flex items-center justify-between border-t border-gray-100 pt-3">
-          <span className="text-xs text-gray-500 truncate max-w-[60%]">{t.organizer}</span>
+          <span className="text-xs text-gray-400">確認日：{t.verifiedAt}</span>
           <Link
             href={`/tournaments/${t.id}`}
             className="text-xs font-medium text-green-700 hover:text-green-800 flex items-center gap-1"
